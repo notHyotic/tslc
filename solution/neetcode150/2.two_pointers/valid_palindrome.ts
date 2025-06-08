@@ -15,10 +15,20 @@ function isPalindrome(s: string): boolean {
     return true
 };
 
+function isAlphanumeric(char: string): boolean {
+    const code = char.charCodeAt(0);
+    // Check if the character is a letter (uppercase or lowercase) or a digit
+    return (
+        (code >= 48 && code <= 57) || // '0' to '9'
+        (code >= 65 && code <= 90) || // 'A' to 'Z'
+        (code >= 97 && code <= 122)   // 'a' to 'z'
+    );
+}
+
 function cleanString(s: string): string {
     let result = '';
     for (const char of s) {
-        if (/[a-zA-Z0-9]/.test(char)) { // Check if the character is a letter or digit
+        if (isAlphanumeric(char)) { // Use the isAlphanumeric function
             result += char.toLowerCase(); // Convert to lowercase and append to result
         }
     }
